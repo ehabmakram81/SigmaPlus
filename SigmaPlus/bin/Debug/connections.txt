@@ -1,0 +1,3 @@
+Provider=sqloledb;Data Source=GEORGE_ERYAN-PC;Initial Catalog=EECGALVA;uid=sa;pwd=;
+driver=sql server;Data Source=GEORGE_ERYAN-PC;Initial Catalog=EECGALVA;uid=sa;pwd=;
+

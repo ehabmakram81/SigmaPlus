@@ -1,0 +1,44 @@
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\bin\Debug\SigmaPlus.exe
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\bin\Debug\SigmaPlus.pdb
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\bin\Debug\SigmaPlus.xml
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\obj\x86\Debug\SigmaPlus.Main.resources
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\obj\x86\Debug\SigmaPlus.Resources.resources
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.GenerateResource.Cache
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\obj\x86\Debug\SigmaPlus.exe
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\obj\x86\Debug\SigmaPlus.xml
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\obj\x86\Debug\SigmaPlus.pdb
+C:\Users\george_eryan\AppData\Local\Temporary Projects\SigmaPlus\obj\x86\Debug\SigmaPlus.Form1.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.ResolveComReference.cache
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Master_Files.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.SecurityForm.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.LoginForm1.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Main.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Resources.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.GenerateResource.Cache
+D:\Codes_Net\SigmaPlus\SigmaPlus\bin\Debug\SigmaPlus.exe
+D:\Codes_Net\SigmaPlus\SigmaPlus\bin\Debug\SigmaPlus.pdb
+D:\Codes_Net\SigmaPlus\SigmaPlus\bin\Debug\SigmaPlus.xml
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.select_one_form.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.exe
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.xml
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.pdb
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Items.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form_popup.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.ResolveComReference.cache
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.exe
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.xml
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.pdb
+E:\Work\NEW\SigmaPlus\SigmaPlus\bin\Debug\SigmaPlus.exe
+E:\Work\NEW\SigmaPlus\SigmaPlus\bin\Debug\SigmaPlus.pdb
+E:\Work\NEW\SigmaPlus\SigmaPlus\bin\Debug\SigmaPlus.xml
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form_popup.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Items.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Master_Files.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.SecurityForm.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.LoginForm1.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Main.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Resources.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.select_one_form.resources
+E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.GenerateResource.Cache
