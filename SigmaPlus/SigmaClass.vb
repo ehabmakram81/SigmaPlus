@@ -73,13 +73,30 @@ Public Module SigmaClass
         reader1.Close()
     End Function
 
-    Public Function doc_log(serial, document, action, reason)
+    Public Sub doc_log(serial, document, action, reason)
         REM =================== logging all users activities
         arg = "insert into doc_log(serial, doc, action, user_id, trx_date,Remarks) values ('" & serial & "', '" & document
         arg = arg & "','" & action & "','" & user_id & "',getdate(),'" & reason & "','Win')"
         If conn.State = ConnectionState.Closed Then conn.Open()
         Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
         cmd2.ExecuteNonQuery()
-    End Function
+    End Sub
+
+
+    Public Sub select_Combo(dropdown As ComboBox, q1 As String)
+        REM ------------------------------------
+        'select_one_form.Text = title1
+        'arg = q1
+        'select_one_form.ShowDialog()
+
+        REM ========================= 
+        adp = New SqlDataAdapter(q1, conn)
+        dt = New DataTable
+        ds = New DataSet()
+        adp.Fill(ds)
+        dropdown.DataSource = ds.Tables(0)
+        dropdown.DisplayMember = "name"
+    End Sub
+
 End Module
 

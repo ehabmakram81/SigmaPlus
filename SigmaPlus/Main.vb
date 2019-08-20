@@ -104,7 +104,7 @@ Public Class Main
         Call select_one("Select store", "select code  as name from stores")
         If state = "cancel" Then Exit Sub
         whno = select_one_form.ComboBox1.Text
-        Inventory_form.ShowDialog()
+        Inventory_form_new.ShowDialog()
     End Sub
 
     Private Sub stock_items_menu_Click(sender As System.Object, e As System.EventArgs) Handles stock_items_menu.Click

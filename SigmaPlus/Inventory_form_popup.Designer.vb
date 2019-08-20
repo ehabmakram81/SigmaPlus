@@ -30,6 +30,13 @@ Partial Class Inventory_form_popup
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.DG1 = New System.Windows.Forms.DataGridView()
+        Me.UOM = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QTY = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Lot = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BarCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ExpDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NetQty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NetUOMQty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -43,13 +50,6 @@ Partial Class Inventory_form_popup
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.UOM = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QTY = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Lot = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BarCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ExpDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NetQty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NetUOMQty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DG1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -138,6 +138,60 @@ Partial Class Inventory_form_popup
         Me.DG1.RowTemplate.Height = 30
         Me.DG1.Size = New System.Drawing.Size(1011, 433)
         Me.DG1.TabIndex = 8
+        '
+        'UOM
+        '
+        Me.UOM.DataPropertyName = "UOM"
+        Me.UOM.HeaderText = "الوحده"
+        Me.UOM.Name = "UOM"
+        Me.UOM.ReadOnly = True
+        Me.UOM.Width = 154
+        '
+        'QTY
+        '
+        Me.QTY.DataPropertyName = "QTY"
+        Me.QTY.HeaderText = "الكميه"
+        Me.QTY.Name = "QTY"
+        Me.QTY.ReadOnly = True
+        Me.QTY.Width = 148
+        '
+        'Lot
+        '
+        Me.Lot.DataPropertyName = "batch"
+        Me.Lot.HeaderText = "LOT"
+        Me.Lot.Name = "Lot"
+        Me.Lot.ReadOnly = True
+        Me.Lot.Width = 195
+        '
+        'BarCode
+        '
+        Me.BarCode.DataPropertyName = "barcode"
+        Me.BarCode.HeaderText = "باركود"
+        Me.BarCode.Name = "BarCode"
+        Me.BarCode.ReadOnly = True
+        Me.BarCode.Width = 195
+        '
+        'ExpDate
+        '
+        Me.ExpDate.DataPropertyName = "ExpDate"
+        Me.ExpDate.HeaderText = "ExpDate"
+        Me.ExpDate.Name = "ExpDate"
+        Me.ExpDate.ReadOnly = True
+        Me.ExpDate.Width = 150
+        '
+        'NetQty
+        '
+        Me.NetQty.DataPropertyName = "NQty"
+        Me.NetQty.HeaderText = "nqty"
+        Me.NetQty.Name = "NetQty"
+        Me.NetQty.ReadOnly = True
+        '
+        'NetUOMQty
+        '
+        Me.NetUOMQty.DataPropertyName = "NetUOMQty"
+        Me.NetUOMQty.HeaderText = "NetUOMQty"
+        Me.NetUOMQty.Name = "NetUOMQty"
+        Me.NetUOMQty.Visible = False
         '
         'Button2
         '
@@ -261,60 +315,6 @@ Partial Class Inventory_form_popup
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(154, 27)
         Me.DateTimePicker1.TabIndex = 30
-        '
-        'UOM
-        '
-        Me.UOM.DataPropertyName = "UOM"
-        Me.UOM.HeaderText = "الوحده"
-        Me.UOM.Name = "UOM"
-        Me.UOM.ReadOnly = True
-        Me.UOM.Width = 154
-        '
-        'QTY
-        '
-        Me.QTY.DataPropertyName = "QTY"
-        Me.QTY.HeaderText = "الكميه"
-        Me.QTY.Name = "QTY"
-        Me.QTY.ReadOnly = True
-        Me.QTY.Width = 148
-        '
-        'Lot
-        '
-        Me.Lot.DataPropertyName = "batch"
-        Me.Lot.HeaderText = "LOT"
-        Me.Lot.Name = "Lot"
-        Me.Lot.ReadOnly = True
-        Me.Lot.Width = 195
-        '
-        'BarCode
-        '
-        Me.BarCode.DataPropertyName = "barcode"
-        Me.BarCode.HeaderText = "باركود"
-        Me.BarCode.Name = "BarCode"
-        Me.BarCode.ReadOnly = True
-        Me.BarCode.Width = 195
-        '
-        'ExpDate
-        '
-        Me.ExpDate.DataPropertyName = "ExpDate"
-        Me.ExpDate.HeaderText = "ExpDate"
-        Me.ExpDate.Name = "ExpDate"
-        Me.ExpDate.ReadOnly = True
-        Me.ExpDate.Width = 150
-        '
-        'NetQty
-        '
-        Me.NetQty.DataPropertyName = "NQty"
-        Me.NetQty.HeaderText = "nqty"
-        Me.NetQty.Name = "NetQty"
-        Me.NetQty.ReadOnly = True
-        '
-        'NetUOMQty
-        '
-        Me.NetUOMQty.DataPropertyName = "NetUOMQty"
-        Me.NetUOMQty.HeaderText = "NetUOMQty"
-        Me.NetUOMQty.Name = "NetUOMQty"
-        Me.NetUOMQty.Visible = False
         '
         'Inventory_form_popup
         '

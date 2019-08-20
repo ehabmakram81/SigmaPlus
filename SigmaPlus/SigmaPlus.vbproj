@@ -64,11 +64,15 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\Bunifu_UI_v1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -89,10 +93,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventory_form.designer.vb">
       <DependentUpon>Inventory_form.vb</DependentUpon>
     </Compile>
     <Compile Include="Inventory_form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory_form_new.Designer.vb">
+      <DependentUpon>Inventory_form_new.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory_form_new.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory_form_popup.designer.vb">
@@ -156,8 +172,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory_form.resx">
       <DependentUpon>Inventory_form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory_form_new.resx">
+      <DependentUpon>Inventory_form_new.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory_form_popup.resx">
       <DependentUpon>Inventory_form_popup.vb</DependentUpon>
