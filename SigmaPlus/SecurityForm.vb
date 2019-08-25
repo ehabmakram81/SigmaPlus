@@ -5,14 +5,14 @@ Public Class SecurityForm
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call center(Me)
         dg1.AllowUserToAddRows = False
-        dg1.AllowUserToAddRows = False
         REM ----------------------- loading users
         arg = "select user_id, user_name from users order by user_id "
-        adp = New SqlDataAdapter(arg, conn)
-        dt = New DataTable
-        ds = New DataSet()
-        adp.Fill(ds)
-        dg1.DataSource = ds.Tables(0)
+        fill_datagrid(dg1, arg)
+        'adp = New SqlDataAdapter(arg, conn)
+        'dt = New DataTable
+        'ds = New DataSet()
+        'adp.Fill(ds)
+        'dg1.DataSource = ds.Tables(0)
 
     End Sub
 

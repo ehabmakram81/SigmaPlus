@@ -10,7 +10,7 @@ Public Module SigmaClass
     Public adp, adp1 As New SqlDataAdapter
     Public conn As SqlConnection
     Public user_id As String
-    Public state, indi, whno As String
+    Public state, indi, whno, acc_master, acc_name As String
 
     Public Sub center(ByVal form1 As Form)
         REM ----------------------------- By George to center the form
@@ -60,7 +60,7 @@ Public Module SigmaClass
     End Function
     Public Function find_setting(label)
         Static arg
-        arg = "select value from setup where  name = '" & label & "'"
+        arg = "select value from data where  name = '" & label & "'"
         Dim cmd1 As SqlCommand = New SqlCommand(arg, conn)
         Dim reader1 As SqlDataReader = cmd1.ExecuteReader()
         If reader1.HasRows = True Then
@@ -81,22 +81,68 @@ Public Module SigmaClass
         Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
         cmd2.ExecuteNonQuery()
     End Sub
+    REM -------------------------------------------------------------
+    Public Sub short_ha(acc_mas, acc_nam, file1)
+        Static arg
+        acc_master = ""
+        acc_name = ""
+
+        REM ==============================================
+        REM ========= Direct search procedure
+        If acc_nam <> "" Then acc_nam = acc_nam.Replace(" ", "%")
 
 
-    Public Sub select_Combo(dropdown As ComboBox, q1 As String)
-        REM ------------------------------------
-        'select_one_form.Text = title1
-        'arg = q1
-        'select_one_form.ShowDialog()
+        Short_hand_form.TextBox1.Text = acc_master
+        Short_hand_form.TextBox2.Text = acc_nam
 
-        REM ========================= 
-        adp = New SqlDataAdapter(q1, conn)
+        arg = "select code as [الكود] ,name as [الأسم] from " & file1 & " where name <> '' "
+        If acc_mas <> "" Then
+            arg = arg & " and code like '%" & acc_mas & "%'"
+        End If
+
+        If acc_nam <> "" Then
+            arg = arg & " and name like '%" & acc_nam & "%'"
+        End If
+
+        REM ----- new Fast Loading
+        adp = New SqlDataAdapter(arg, conn)
         dt = New DataTable
         ds = New DataSet()
         adp.Fill(ds)
-        dropdown.DataSource = ds.Tables(0)
-        dropdown.DisplayMember = "name"
-    End Sub
+        Short_hand_form.dg1.DataSource = ds.Tables(0)
+        REM ==============================================
+        REM ========= Similar search
+        REM ==============================================
+        If ds.Tables(0).Rows.Count > 1 Then
+            Short_hand_form.ShowDialog()
+        End If
 
+
+    End Sub
+    Public Sub fill_datagrid(ByVal datagrid1 As DataGridView, ByVal arg1 As String)
+        'Static adp, dt, ds
+        adp = New SqlDataAdapter(arg1, conn)
+        dt = New DataTable
+        ds = New DataSet()
+        adp.Fill(ds)
+        datagrid1.DataSource = ds.Tables(0)
+    End Sub
+    Public Sub Clear_datagrid(ByVal datagrid1 As DataGridView)
+        For Each row In datagrid1.Rows
+            datagrid1.Rows.Remove(row)
+        Next
+    End Sub
+    Public Sub fill_Combo(dropdown As ComboBox, arg1 As String)
+        REM ------------------------------------
+        adp = New SqlDataAdapter(arg1, conn)
+        dt = New DataTable
+        ds = New DataSet()
+        adp.Fill(ds)
+        ds.Tables(0).Rows.Add()
+        dropdown.DataSource = ds.Tables(0)
+        Dim name As String = ds.Tables(0).Columns(0).ColumnName
+        ds.Tables(0).DefaultView.Sort = name
+        dropdown.DisplayMember = name
+    End Sub
 End Module
 

@@ -19,27 +19,25 @@ Public Class Master_Files
         TextBox1.Text = ""
         TextBox2.Text = ""
         SaveMenuItem.Text = "حفظ"
-        'GroupBox1.Enabled = False
-        'ComboBox1.Enabled = True
         ds.Tables(0).Clear()
-        LoadDG1()
+        fill_datagrid(DG1, "select * from " & ComboBox1.Text)
+        'LoadDG1()
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        'GroupBox1.Enabled = True
-        'ComboBox1.Enabled = False
-        REM = ========= Load DG1
-        LoadDG1()
-    End Sub
-    Sub LoadDG1()
         If ComboBox1.Text = "" Then Exit Sub
-        arg = "select * from " & ComboBox1.Text & ""
-        adp = New SqlDataAdapter(arg, conn)
-        dt = New DataTable
-        ds = New DataSet()
-        adp.Fill(ds)
-        DG1.DataSource = ds.Tables(0)
+        fill_datagrid(DG1, "select * from " & ComboBox1.Text)
+        'LoadDG1()
     End Sub
+    'Sub LoadDG1()
+    '    If ComboBox1.Text = "" Then Exit Sub
+    '    arg = "select * from " & ComboBox1.Text & ""
+    '    adp = New SqlDataAdapter(arg, conn)
+    '    dt = New DataTable
+    '    ds = New DataSet()
+    '    adp.Fill(ds)
+    '    DG1.DataSource = ds.Tables(0)
+    'End Sub
     Private Sub SaveMenuItem_Click(sender As Object, e As EventArgs) Handles SaveMenuItem.Click
         If ComboBox1.Text = "" Then
             MsgBox("برجاء ادخال البيان") : Exit Sub
@@ -81,7 +79,8 @@ Public Class Master_Files
         'MsgBox("تم الادخال بنجاح")
         REM = ========= Load DG1
 
-        LoadDG1()
+        NewMenuItem_Click(sender, e)
+
         TextBox1.Text = ""
         TextBox2.Text = ""
         SaveMenuItem.Text = "حفظ"
@@ -108,7 +107,7 @@ Public Class Master_Files
             Dim cmd1 As New System.Data.SqlClient.SqlCommand(arg, conn)
             cmd1.ExecuteNonQuery()
             MsgBox("تم الحذف")
-            LoadDG1()
+            fill_datagrid(DG1, "select * from " & ComboBox1.Text)
             TextBox1.Text = ""
             TextBox2.Text = ""
             SaveMenuItem.Text = "حفظ"

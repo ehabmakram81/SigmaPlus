@@ -64,15 +64,11 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\Bunifu_UI_v1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -93,10 +89,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Short_hand_form.Designer.vb">
+      <DependentUpon>Short_hand_form.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="Short_hand_form.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory_form.designer.vb">
@@ -105,16 +101,10 @@
     <Compile Include="Inventory_form.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory_form_new.Designer.vb">
-      <DependentUpon>Inventory_form_new.vb</DependentUpon>
+    <Compile Include="Inventory_Details.designer.vb">
+      <DependentUpon>Inventory_Details.vb</DependentUpon>
     </Compile>
-    <Compile Include="Inventory_form_new.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory_form_popup.designer.vb">
-      <DependentUpon>Inventory_form_popup.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory_form_popup.vb">
+    <Compile Include="Inventory_Details.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Items.Designer.vb">
@@ -128,6 +118,12 @@
       <DependentUpon>Master_Files.vb</DependentUpon>
     </Compile>
     <Compile Include="Master_Files.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="more_info.Designer.vb">
+      <DependentUpon>more_info.vb</DependentUpon>
+    </Compile>
+    <Compile Include="more_info.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SecurityForm.Designer.vb">
@@ -172,23 +168,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Short_hand_form.resx">
+      <DependentUpon>Short_hand_form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory_form.resx">
       <DependentUpon>Inventory_form.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory_form_new.resx">
-      <DependentUpon>Inventory_form_new.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory_form_popup.resx">
-      <DependentUpon>Inventory_form_popup.vb</DependentUpon>
+    <EmbeddedResource Include="Inventory_Details.resx">
+      <DependentUpon>Inventory_Details.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Items.resx">
       <DependentUpon>Items.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Master_Files.resx">
       <DependentUpon>Master_Files.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="more_info.resx">
+      <DependentUpon>more_info.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SecurityForm.resx">
       <DependentUpon>SecurityForm.vb</DependentUpon>

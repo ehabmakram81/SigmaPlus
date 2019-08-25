@@ -42,23 +42,24 @@ E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Main.resources
 E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Resources.resources
 E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.select_one_form.resources
 E:\Work\NEW\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.GenerateResource.Cache
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.ResolveComReference.cache
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.xml
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.pdb
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Form1.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form_new.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form_popup.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Items.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Master_Files.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.SecurityForm.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.LoginForm1.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Main.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.Resources.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.select_one_form.resources
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.GenerateResource.Cache
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\bin\Debug\SigmaPlus.exe
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\bin\Debug\SigmaPlus.pdb
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\bin\Debug\SigmaPlus.xml
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\bin\Debug\Bunifu_UI_v1.5.3.dll
-E:\Work\NEW\SigmaPlus - GitHub\SigmaPlus\obj\x86\Debug\SigmaPlus.exe
+D:\CODES_NET\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.more_info.resources
+D:\Codes_Net\SigmaPlus\SigmaPlus\obj\x86\Debug\SigmaPlus.Short_hand_form.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.ResolveComReference.cache
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.exe
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.xml
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.pdb
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\bin\Debug\SigmaPlus.exe
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\bin\Debug\SigmaPlus.pdb
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\bin\Debug\SigmaPlus.xml
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.Short_hand_form.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_form.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.Items.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.Master_Files.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.more_info.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.SecurityForm.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.LoginForm1.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.Main.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.Resources.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.select_one_form.resources
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.vbproj.GenerateResource.Cache
+E:\Work\NEW\sigmaplus_software-master\SigmaPlus-George\SigmaPlus\obj\x86\Debug\SigmaPlus.Inventory_Details.resources

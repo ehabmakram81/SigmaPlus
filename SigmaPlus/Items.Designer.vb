@@ -22,6 +22,7 @@ Partial Class Items
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.NewMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -60,6 +61,8 @@ Partial Class Items
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.DeleteItemMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -67,6 +70,7 @@ Partial Class Items
         Me.TabPage2.SuspendLayout()
         CType(Me.DG1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -454,6 +458,7 @@ Partial Class Items
         '
         'TextBox1
         '
+        Me.TextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox1.Location = New System.Drawing.Point(421, 22)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBox1.MaxLength = 30
@@ -461,6 +466,19 @@ Partial Class Items
         Me.TextBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.TextBox1.Size = New System.Drawing.Size(351, 27)
         Me.TextBox1.TabIndex = 0
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteItemMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(165, 30)
+        '
+        'DeleteItemMenuItem
+        '
+        Me.DeleteItemMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.DeleteItemMenuItem.Name = "DeleteItemMenuItem"
+        Me.DeleteItemMenuItem.Size = New System.Drawing.Size(164, 26)
+        Me.DeleteItemMenuItem.Text = "حذف  الوحده "
         '
         'Items
         '
@@ -490,6 +508,7 @@ Partial Class Items
         CType(Me.DG1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -532,4 +551,6 @@ Partial Class Items
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents DeleteItemMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

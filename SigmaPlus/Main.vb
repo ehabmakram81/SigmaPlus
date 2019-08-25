@@ -89,7 +89,7 @@ Public Class Main
     End Sub
 
     Private Sub Main_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        
+
         
     End Sub
 
@@ -104,7 +104,7 @@ Public Class Main
         Call select_one("Select store", "select code  as name from stores")
         If state = "cancel" Then Exit Sub
         whno = select_one_form.ComboBox1.Text
-        Inventory_form_new.ShowDialog()
+        Inventory_form.ShowDialog()
     End Sub
 
     Private Sub stock_items_menu_Click(sender As System.Object, e As System.EventArgs) Handles stock_items_menu.Click
@@ -118,5 +118,10 @@ Public Class Main
         If state = "cancel" Then Exit Sub
         whno = select_one_form.ComboBox1.Text
         Inventory_form.ShowDialog()
+    End Sub
+
+    Private Sub OptionsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles OptionsToolStripMenuItem.Click
+        more_info.ShowDialog()
+
     End Sub
 End Class

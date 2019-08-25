@@ -20,6 +20,8 @@ Public Class LoginForm1
         dt = New DataTable
         ds = New DataSet()
         adp.Fill(ds)
+
+
         REM ------------------- Valuidate the results
         If ds.Tables(0).Rows.Count = 0 Then
             MsgBox("Invalid User name or password ") : Exit Sub

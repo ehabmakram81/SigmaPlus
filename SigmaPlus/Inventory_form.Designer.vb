@@ -22,8 +22,10 @@ Partial Class Inventory_form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.NewMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,9 +40,13 @@ Partial Class Inventory_form
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.DG1 = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.DeleteItemMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -49,14 +55,11 @@ Partial Class Inventory_form
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UOM = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DG1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -68,7 +71,7 @@ Partial Class Inventory_form
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(11, 3, 0, 3)
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.MenuStrip1.Size = New System.Drawing.Size(830, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(832, 29)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -178,8 +181,9 @@ Partial Class Inventory_form
         '
         'TextBox2
         '
+        Me.TextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(544, 22)
+        Me.TextBox2.Location = New System.Drawing.Point(544, 44)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBox2.MaxLength = 10
         Me.TextBox2.Name = "TextBox2"
@@ -189,6 +193,8 @@ Partial Class Inventory_form
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.TextBox5)
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Controls.Add(Me.DG1)
@@ -197,14 +203,36 @@ Partial Class Inventory_form
         Me.GroupBox2.Controls.Add(Me.TextBox2)
         Me.GroupBox2.Location = New System.Drawing.Point(15, 299)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(800, 445)
+        Me.GroupBox2.Size = New System.Drawing.Size(800, 404)
         Me.GroupBox2.TabIndex = 17
         Me.GroupBox2.TabStop = False
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Label10.Location = New System.Drawing.Point(241, 19)
+        Me.Label10.Name = "Label10"
+        Me.Label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label10.Size = New System.Drawing.Size(0, 19)
+        Me.Label10.TabIndex = 26
+        Me.Label10.Visible = False
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Label9.Location = New System.Drawing.Point(552, 19)
+        Me.Label9.Name = "Label9"
+        Me.Label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label9.Size = New System.Drawing.Size(0, 19)
+        Me.Label9.TabIndex = 25
+        Me.Label9.Visible = False
         '
         'TextBox5
         '
         Me.TextBox5.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(22, 22)
+        Me.TextBox5.Location = New System.Drawing.Point(22, 44)
         Me.TextBox5.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBox5.MaxLength = 10
         Me.TextBox5.Name = "TextBox5"
@@ -218,7 +246,7 @@ Partial Class Inventory_form
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 12.0!)
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(131, 22)
+        Me.ComboBox1.Location = New System.Drawing.Point(131, 44)
         Me.ComboBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(103, 27)
@@ -229,6 +257,28 @@ Partial Class Inventory_form
         '
         Me.DG1.AllowUserToAddRows = False
         Me.DG1.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DG1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DG1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DG1.ContextMenuStrip = Me.ContextMenuStrip1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DG1.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DG1.Location = New System.Drawing.Point(6, 80)
+        Me.DG1.Name = "DG1"
+        Me.DG1.ReadOnly = True
+        Me.DG1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!)
@@ -236,31 +286,29 @@ Partial Class Inventory_form
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DG1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.DG1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.ItemName, Me.UOM, Me.Qty})
-        Me.DG1.Location = New System.Drawing.Point(6, 58)
-        Me.DG1.Name = "DG1"
-        Me.DG1.ReadOnly = True
-        Me.DG1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DG1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DG1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DG1.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DG1.RowTemplate.Height = 35
-        Me.DG1.Size = New System.Drawing.Size(779, 376)
+        Me.DG1.Size = New System.Drawing.Size(779, 315)
         Me.DG1.TabIndex = 22
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteItemMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(152, 30)
+        '
+        'DeleteItemMenuItem
+        '
+        Me.DeleteItemMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.DeleteItemMenuItem.Name = "DeleteItemMenuItem"
+        Me.DeleteItemMenuItem.Size = New System.Drawing.Size(151, 26)
+        Me.DeleteItemMenuItem.Text = "حذف صنف"
         '
         'TextBox3
         '
-        Me.TextBox3.Enabled = False
         Me.TextBox3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(234, 22)
+        Me.TextBox3.Location = New System.Drawing.Point(234, 44)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBox3.MaxLength = 10
         Me.TextBox3.Name = "TextBox3"
@@ -271,7 +319,7 @@ Partial Class Inventory_form
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Button2.Location = New System.Drawing.Point(746, 21)
+        Me.Button2.Location = New System.Drawing.Point(746, 43)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(39, 28)
         Me.Button2.TabIndex = 16
@@ -346,42 +394,11 @@ Partial Class Inventory_form
         Me.Label4.TabIndex = 28
         Me.Label4.Text = "ملاحظات"
         '
-        'Qty
-        '
-        Me.Qty.DataPropertyName = "Qty"
-        Me.Qty.HeaderText = "الكميه"
-        Me.Qty.Name = "Qty"
-        Me.Qty.ReadOnly = True
-        Me.Qty.Width = 110
-        '
-        'UOM
-        '
-        Me.UOM.DataPropertyName = "UOM"
-        Me.UOM.HeaderText = "الوحده"
-        Me.UOM.Name = "UOM"
-        Me.UOM.ReadOnly = True
-        '
-        'ItemName
-        '
-        Me.ItemName.DataPropertyName = "ItemName"
-        Me.ItemName.HeaderText = "أسم الصنف"
-        Me.ItemName.Name = "ItemName"
-        Me.ItemName.ReadOnly = True
-        Me.ItemName.Width = 310
-        '
-        'Item
-        '
-        Me.Item.DataPropertyName = "Itemno"
-        Me.Item.HeaderText = "كود الصنف"
-        Me.Item.Name = "Item"
-        Me.Item.ReadOnly = True
-        Me.Item.Width = 200
-        '
         'Inventory_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(830, 757)
+        Me.ClientSize = New System.Drawing.Size(832, 713)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -397,6 +414,7 @@ Partial Class Inventory_form
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.DG1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
@@ -428,8 +446,8 @@ Partial Class Inventory_form
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents Item As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents UOM As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Qty As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents DeleteItemMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
