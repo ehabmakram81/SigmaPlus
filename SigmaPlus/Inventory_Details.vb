@@ -5,16 +5,23 @@ Public Class Inventory_Details
 
     Private Sub Inventory_form_popup_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call center(Me)
-        REM =========================== load items UOM
-        arg = "SELECT UOM, factor FROM  items_uom WHERE (item = N'" & TextBox5.Text & "')"
-        fill_Combo(ComboBox1, arg)
         loaddata()
     End Sub
 
-    Public Sub loaddata()     
+    Public Sub loaddata()
+        REM =========================== load items UOM
+        arg = "SELECT UOM, factor FROM  items_uom WHERE (item = N'" & TextBox5.Text & "')"
+        fill_Combo(ComboBox1, arg)
+        If ComboBox1.Items.Count = 2 Then
+            ComboBox1.SelectedIndex = 1
+        End If
+
+        REM =========================== Old items 
         arg = "SELECT UOM, Qty, batch , SerNo as barcode, NetQty as NQty, ExpDate ,NetUOMQty FROM  dbo.Serial_Details WHERE (Indi = '" & TextBox8.Text & "') AND (Serial = '" & TextBox4.Text & "') AND (WhNo = '" & TextBox7.Text & "') AND (ItemNo = '" & TextBox5.Text & "')"
         fill_datagrid(DG1, arg)
         DG1.Columns(6).Visible = False
+
+        TextBox1.Focus()
     End Sub
 
 
@@ -23,16 +30,37 @@ Public Class Inventory_Details
             MsgBox("برجاء ادخال الوحدة")
             Exit Sub
         End If
+
         If TextBox1.Text = "" Then
             MsgBox("برجاء ادخال الكميه")
             Exit Sub
         End If
-        'REM ========== Check Dublicat
-        'For Each row As DataGridViewRow In DG1.Rows
-        '    If row.Cells.Item("UOM").Value = ComboBox1.Text Then
-        '        MsgBox("تم ادخال هذة الوحده من قبل ") : Exit Sub
+        If TextBox3.Enabled = True Then
+            If TextBox3.Text = "" Then
+                MsgBox("Batch برجاء ادخال ")
+                Exit Sub
+            End If
+        End If
+        If TextBox2.Enabled = True Then
+            If TextBox2.Text = "" Then
+                MsgBox("Barcode برجاء ادخال ")
+                Exit Sub
+            End If
+        End If
+        'If TextBox2.Enabled = True And TextBox3.Enabled = True Then
+        '    If TextBox3.Text = "" Then
+        '        MsgBox("Batch برجاء ادخال ") : Exit Sub
         '    End If
-        'Next
+        '    If TextBox2.Text = "" Then
+        '        MsgBox("Barcode برجاء ادخال ") : Exit Sub
+        '    End If
+        'End If
+        'REM ========== Check Dublicat
+        For Each row As DataGridViewRow In DG1.Rows
+            If row.Cells.Item("UOM").Value = ComboBox1.Text And row.Cells.Item("Lot").Value = TextBox3.Text And row.Cells.Item("BarCode").Value = TextBox2.Text Then
+                MsgBox("تم ادخال هذة الوحده من قبل ") : Exit Sub
+            End If
+        Next
 
         Dim dd As String = DateTimePicker1.Value.ToString("yyyy/MM/dd")
         REM ================ split Qty
@@ -66,8 +94,12 @@ Public Class Inventory_Details
 
         REM==================================== Change Control
         DG1.EndEdit()
-        ComboBox1.Text = ""
-        TextBox1.Text = ""
+        REM ====== to foucs 
+        If TextBox3.Enabled = True Then
+            TextBox3.Focus()
+        Else
+            TextBox2.Focus()
+        End If
         TextBox2.Text = ""
         TextBox3.Text = ""
     End Sub

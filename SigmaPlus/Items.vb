@@ -169,12 +169,6 @@ Public Class Items
         '    MsgBox(" برجاء ادخال السعر ")
         '    Exit Sub
         'End If
-        Dim checked As Integer
-        If CheckBox1.Checked = True Then
-            checked = 0
-        Else
-            checked = 1
-        End If
 
         REM ===== save 
         InsertAlltransaction()
@@ -213,7 +207,6 @@ Public Class Items
         NewMenuItem_Click(sender, e)
     End Sub
 
-
     Private Sub InsertAlltransaction()
         REM === to Commit transaction
         Dim command As SqlCommand = conn.CreateCommand()
@@ -222,10 +215,15 @@ Public Class Items
         transaction = conn.BeginTransaction("SampleTransaction")
         command.Connection = conn
         command.Transaction = transaction
+        Dim checked As Integer
+        If CheckBox1.Checked = True Then
+            checked = 0
+        Else
+            checked = 1
+        End If
         Try
             REM ===== save 
             If SaveMenuItem.Text = "حفظ" Then
-
                 arg = "INSERT INTO items(code, name, aname, UOM, Type1, family, cost, ReOrder, wght, SerialTrack, Active, Remarks, user_id, trx_date)"
                 arg = arg & "VALUES ('" & UCase(TextBox1.Text) & "','" & TextBox2.Text & "','" & TextBox3.Text & "','" & ComboBox5.Text & "','" & ComboBox1.Text & "','" & ComboBox2.Text & "','" & Val(TextBox4.Text) & "','" & Val(TextBox6.Text) & "','" & Val(TextBox7.Text) & "'  ,'" & Val(ComboBox3.SelectedIndex) & "','" & checked & "','" & TextBox5.Text & "','" & user_id & "', getdate())"
                 command.CommandText = arg
@@ -244,7 +242,6 @@ Public Class Items
                     Dim arg2 As String = " INSERT INTO items_uom (item, UOM, factor) VALUES('" & TextBox1.Text & "','" & DG1.Rows(i).Cells("UOM").Value.ToString & "' , '" & DG1.Rows(i).Cells("factor").Value.ToString & "' )"
                     command.CommandText = arg2
                     command.ExecuteNonQuery()
-
                 Next
             End If
             ' Attempt to commit the transaction.

@@ -48,7 +48,6 @@ Partial Class Inventory_form
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteItemMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -188,7 +187,7 @@ Partial Class Inventory_form
         Me.TextBox2.MaxLength = 10
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.TextBox2.Size = New System.Drawing.Size(199, 27)
+        Me.TextBox2.Size = New System.Drawing.Size(241, 27)
         Me.TextBox2.TabIndex = 11
         '
         'GroupBox2
@@ -199,7 +198,6 @@ Partial Class Inventory_form
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Controls.Add(Me.DG1)
         Me.GroupBox2.Controls.Add(Me.TextBox3)
-        Me.GroupBox2.Controls.Add(Me.Button2)
         Me.GroupBox2.Controls.Add(Me.TextBox2)
         Me.GroupBox2.Location = New System.Drawing.Point(15, 299)
         Me.GroupBox2.Name = "GroupBox2"
@@ -232,14 +230,13 @@ Partial Class Inventory_form
         'TextBox5
         '
         Me.TextBox5.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(22, 44)
+        Me.TextBox5.Location = New System.Drawing.Point(6, 44)
         Me.TextBox5.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBox5.MaxLength = 10
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.TextBox5.Size = New System.Drawing.Size(109, 27)
+        Me.TextBox5.Size = New System.Drawing.Size(125, 27)
         Me.TextBox5.TabIndex = 24
-        Me.TextBox5.Visible = False
         '
         'ComboBox1
         '
@@ -251,7 +248,6 @@ Partial Class Inventory_form
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(103, 27)
         Me.ComboBox1.TabIndex = 23
-        Me.ComboBox1.Visible = False
         '
         'DG1
         '
@@ -316,16 +312,6 @@ Partial Class Inventory_form
         Me.TextBox3.Size = New System.Drawing.Size(310, 27)
         Me.TextBox3.TabIndex = 17
         '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Button2.Location = New System.Drawing.Point(746, 43)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(39, 28)
-        Me.Button2.TabIndex = 16
-        Me.Button2.Text = "..."
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.Label8)
@@ -375,12 +361,12 @@ Partial Class Inventory_form
         'TextBox4
         '
         Me.TextBox4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(16, 154)
+        Me.TextBox4.Location = New System.Drawing.Point(6, 154)
         Me.TextBox4.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBox4.MaxLength = 30
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.TextBox4.Size = New System.Drawing.Size(702, 27)
+        Me.TextBox4.Size = New System.Drawing.Size(712, 27)
         Me.TextBox4.TabIndex = 15
         '
         'Label4
@@ -431,7 +417,6 @@ Partial Class Inventory_form
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents DG1 As System.Windows.Forms.DataGridView
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox

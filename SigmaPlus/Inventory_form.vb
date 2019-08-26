@@ -16,7 +16,8 @@ Public Class Inventory_form
         GroupBox2.Enabled = False
         GroupBox3.Enabled = False
         SaveMenuItem.Text = "حفظ"
-
+        ComboBox1.Enabled = False
+        TextBox5.Enabled = False
     End Sub
 
     Private Sub Inventory_form_FormClosed(sender As Object, e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
@@ -32,8 +33,8 @@ Public Class Inventory_form
     End Sub
     Sub RetriveDate(code As String)
         REM ================Change Controls
-        ComboBox1.Visible = False
-        TextBox5.Visible = False
+        ComboBox1.Enabled = False
+        TextBox5.Enabled = False
         Inventory_Details.CheckBox4.Enabled = False
         Inventory_Details.TextBox2.Enabled = False
         Inventory_Details.BarCode.ReadOnly = True
@@ -51,6 +52,9 @@ Public Class Inventory_form
                 reader1.Read()
                 TextBox3.Text = reader1("name").ToString
                 Track = Val(reader1("SerialTrack").ToString)
+                'ComboBox1.Items.Clear()
+                'ComboBox1.Items.Add("")
+                'ComboBox1.Items.Add(reader1("UOM").ToString)
             End If
             reader1.Close()
         End If
@@ -68,11 +72,11 @@ Public Class Inventory_form
             Case 1, 0
                 TextBox5.Text = ""
                 REM =========================== load UOM
-                ComboBox1.Items.Clear()
-                arg = "SELECT UOM, factor FROM  UOM_view WHERE (code = N'" & TextBox2.Text & "')"
+                ' ComboBox1.Items.Clear()
+                arg = "SELECT UOM, factor FROM Items_UOM_all WHERE (code = N'" & TextBox2.Text & "')"
                 fill_Combo(ComboBox1, arg)
-                ComboBox1.Visible = True
-                TextBox5.Visible = True
+                ComboBox1.Enabled = True
+                TextBox5.Enabled = True
                 If ComboBox1.Items.Count = 2 Then
                     ComboBox1.SelectedIndex = 1
                     TextBox5.Focus()
@@ -174,7 +178,7 @@ Public Class Inventory_form
         End If
         'REM ========== Check Dublicat
         For Each row As DataGridViewRow In DG1.Rows
-            If row.Cells.Item("UOM").Value = ComboBox1.Text And row.Cells.Item("Item").Value = Label9.Text Then
+            If row.Cells.Item("UOM").Value = ComboBox1.Text And row.Cells.Item("Itemno").Value = Label9.Text Then
 
                 MsgBox("تم ادخال هذة الوحده من قبل ") : Exit Sub
             End If
@@ -219,7 +223,6 @@ Public Class Inventory_form
         If e.KeyChar <> Microsoft.VisualBasic.ChrW(Keys.Return) Then Exit Sub
 
         Call short_ha(TextBox2.Text, "", "items_view")
-
 
         If acc_master <> "" Then
             items = acc_master
