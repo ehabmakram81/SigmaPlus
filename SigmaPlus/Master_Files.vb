@@ -8,6 +8,9 @@ Public Class Master_Files
         ComboBox1.Items.Add("UOM")
         ComboBox1.Items.Add("Family")
         ComboBox1.Items.Add("Currencies")
+        ComboBox1.Items.Add("Customer")
+        ComboBox1.Items.Add("Vendor")
+
         'NewMenuItem_Click(sender, e)
     End Sub
 

@@ -418,6 +418,7 @@ Partial Class Items
         Me.DG1.AllowUserToAddRows = False
         Me.DG1.AllowUserToDeleteRows = False
         Me.DG1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DG1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.DG1.Location = New System.Drawing.Point(284, 45)
         Me.DG1.Name = "DG1"
         Me.DG1.RowTemplate.Height = 30

@@ -113,6 +113,10 @@ Public Class Items
     End Sub
 
     Private Sub DeleteMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DeleteMenuItem.Click
+        If TextBox1.Enabled = True Then
+            MsgBox(" برجاء تحميل بيانات الصنف")
+            Exit Sub
+        End If
         If TextBox1.Text = "" Then
             MsgBox(" برجاء ادخال كود الصنف")
             Exit Sub
@@ -125,6 +129,21 @@ Public Class Items
         If Len(TextBox1.Text) <> whno Then
             MsgBox("طول الكود غير مقبول") : Exit Sub
         End If
+        REM ----------------------- check in Move Table
+        arg = " SELECT Item FROM Move WHERE (Item = '" & TextBox1.Text & "') "
+        Dim cmd2 As SqlCommand = New SqlCommand(arg, conn)
+        Dim reader1 As SqlDataReader = cmd2.ExecuteReader()
+        If reader1.HasRows = True Then
+            MsgBox("لا يمكن حذف هذا الصنف") : Exit Sub
+        End If
+        REM ================= Delete Items 
+        arg = "DELETE  FROM items WHERE code = '" & TextBox1.Text & "'"
+        If conn.State = ConnectionState.Closed Then conn.Open()
+        Dim cmd1 As New System.Data.SqlClient.SqlCommand(arg, conn)
+        cmd1.ExecuteNonQuery()
+
+        REM ================= doc_log
+        doc_log(TextBox1.Text, "", "Delete Item", "")
     End Sub
 
     Private Sub SaveMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SaveMenuItem.Click
@@ -173,6 +192,7 @@ Public Class Items
         REM ===== save 
         InsertAlltransaction()
 
+        doc_log(TextBox1.Text, SaveMenuItem.Text, "Save Item", "")
         'If SaveMenuItem.Text = "حفظ" Then
 
         '    arg = "INSERT INTO items(code, name, aname, UOM, Type1, family, cost, ReOrder, wght, SerialTrack, Active, Remarks, user_id, trx_date)"
@@ -331,13 +351,24 @@ Public Class Items
         Next
     End Sub
     Private Sub DeleteItemMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DeleteItemMenuItem.Click
-        'Dim J = MsgBox(" هل تريد حذف وحده " & DG1.CurrentRow.Cells("UOM").Value & " ", vbYesNo)
-        'If J <> 6 Then Exit Sub
-        'REM ================= Delete Before Save serial History == Details
-        'arg = "DELETE  FROM items_uom WHERE item = '" & TextBox1.Text & "' and UOM = '" & DG1.CurrentRow.Cells("UOM").Value & "'"
-        'If conn.State = ConnectionState.Closed Then conn.Open()
-        'Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
-        'cmd2.ExecuteNonQuery()
-        'loaddata()
+        Dim J = MsgBox(" هل تريد حذف وحده " & DG1.CurrentRow.Cells("UOM").Value & " ", vbYesNo)
+        If J <> 6 Then Exit Sub
+
+        arg = " SELECT  Item  FROM Move  WHERE  (Item = '" & TextBox1.Text & "') AND (UOM = '" & DG1.CurrentRow.Cells("UOM").Value & "') "
+        Dim cmd3 As SqlCommand = New SqlCommand(arg, conn)
+        Dim reader1 As SqlDataReader = cmd3.ExecuteReader()
+        If reader1.HasRows = True Then
+            MsgBox("لا يمكن حذف هذا الصنف") : Exit Sub
+        End If
+
+        REM ================= Delete Before Save serial History == Details
+        arg = "DELETE  FROM items_uom WHERE item = '" & TextBox1.Text & "' and UOM = '" & DG1.CurrentRow.Cells("UOM").Value & "'"
+        If conn.State = ConnectionState.Closed Then conn.Open()
+        Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
+        cmd2.ExecuteNonQuery()
+
+
+
+        loaddata()
     End Sub
 End Class

@@ -76,7 +76,7 @@ Public Module SigmaClass
     Public Sub doc_log(serial, document, action, reason)
         REM =================== logging all users activities
         arg = "insert into doc_log(serial, doc, action, user_id, trx_date,Remarks) values ('" & serial & "', '" & document
-        arg = arg & "','" & action & "','" & user_id & "',getdate(),'" & reason & "','Win')"
+        arg = arg & "','" & action & "','" & user_id & "',getdate(),'" & reason & "')"
         If conn.State = ConnectionState.Closed Then conn.Open()
         Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
         cmd2.ExecuteNonQuery()
