@@ -3,15 +3,13 @@
 Public Class Master_Files
     Private Sub Master_Files_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         center(Me)
-        ComboBox1.Items.Add("")
         ComboBox1.Items.Add("Stores")
         ComboBox1.Items.Add("UOM")
         ComboBox1.Items.Add("Family")
         ComboBox1.Items.Add("Currencies")
-        ComboBox1.Items.Add("Customer")
-        ComboBox1.Items.Add("Vendor")
+        ComboBox1.Items.Add("Customers")
+        ComboBox1.Items.Add("Vendors")
 
-        'NewMenuItem_Click(sender, e)
     End Sub
 
     Private Sub ExitMenuItem_Click(sender As Object, e As EventArgs) Handles ExitMenuItem.Click
@@ -24,23 +22,18 @@ Public Class Master_Files
         SaveMenuItem.Text = "حفظ"
         ds.Tables(0).Clear()
         fill_datagrid(DG1, "select * from " & ComboBox1.Text)
-        'LoadDG1()
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.Text = "" Then Exit Sub
         fill_datagrid(DG1, "select * from " & ComboBox1.Text)
+        DG1.Columns(0).HeaderText = "الكود"
+        DG1.Columns(1).HeaderText = "الاسم"
+        DG1.Columns(0).Width = 80
+        DG1.Columns(1).Width = 150
         'LoadDG1()
     End Sub
-    'Sub LoadDG1()
-    '    If ComboBox1.Text = "" Then Exit Sub
-    '    arg = "select * from " & ComboBox1.Text & ""
-    '    adp = New SqlDataAdapter(arg, conn)
-    '    dt = New DataTable
-    '    ds = New DataSet()
-    '    adp.Fill(ds)
-    '    DG1.DataSource = ds.Tables(0)
-    'End Sub
+
     Private Sub SaveMenuItem_Click(sender As Object, e As EventArgs) Handles SaveMenuItem.Click
         If ComboBox1.Text = "" Then
             MsgBox("برجاء ادخال البيان") : Exit Sub
@@ -79,7 +72,6 @@ Public Class Master_Files
             Dim cmd1 As New System.Data.SqlClient.SqlCommand(arg, conn)
             cmd1.ExecuteNonQuery()
         End If
-        'MsgBox("تم الادخال بنجاح")
         REM = ========= Load DG1
 
         NewMenuItem_Click(sender, e)
@@ -87,8 +79,6 @@ Public Class Master_Files
         TextBox1.Text = ""
         TextBox2.Text = ""
         SaveMenuItem.Text = "حفظ"
-        GroupBox1.Enabled = False
-        ComboBox1.Enabled = True
 
     End Sub
 

@@ -166,6 +166,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="uom_converter_form.Designer.vb">
+      <DependentUpon>uom_converter_form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="uom_converter_form.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Short_hand_form.resx">
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="select_one_form.resx">
       <DependentUpon>select_one_form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uom_converter_form.resx">
+      <DependentUpon>uom_converter_form.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

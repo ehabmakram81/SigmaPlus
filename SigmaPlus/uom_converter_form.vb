@@ -11,6 +11,9 @@
         If acc_master <> "" Then
             TextBox1.Text = acc_master
             TextBox2.Text = acc_name
+            REM -------------------- load item uoms 
+            arg = "select UOM as name from items_uom_all where code = '" & acc_master & "'"
+            Call fill_Combo(ComboBox1, arg)
         End If
     End Sub
 
@@ -38,5 +41,11 @@
         REM ---------------------- check Qnatitties are enough per line
         REM ====================== Saving (lood over all dg1 rows) 
         REM ====================== clear the form 
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
+        REM ------------------------ Load item stock 
+        arg = "select * from serial_master where item = '" & TextBox1.Text & "' and UOM = '" & ComboBox1.Text & "'"
+        fill_datagrid(dg1, arg)
     End Sub
 End Class

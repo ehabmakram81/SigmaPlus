@@ -136,14 +136,20 @@ Public Class Items
         If reader1.HasRows = True Then
             MsgBox("لا يمكن حذف هذا الصنف") : Exit Sub
         End If
+        reader1.Close()
         REM ================= Delete Items 
         arg = "DELETE  FROM items WHERE code = '" & TextBox1.Text & "'"
         If conn.State = ConnectionState.Closed Then conn.Open()
         Dim cmd1 As New System.Data.SqlClient.SqlCommand(arg, conn)
         cmd1.ExecuteNonQuery()
-
+        REM ================= Delete items_uom 
+        arg = "DELETE  FROM items_uom WHERE item = '" & TextBox1.Text & "'"
+        If conn.State = ConnectionState.Closed Then conn.Open()
+        Dim cmd3 As New System.Data.SqlClient.SqlCommand(arg, conn)
+        cmd3.ExecuteNonQuery()
         REM ================= doc_log
-        doc_log(TextBox1.Text, "", "Delete Item", "")
+        'doc_log(TextBox1.Text, "", "Delete Item", "")
+        NewMenuItem_Click(sender, e)
     End Sub
 
     Private Sub SaveMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SaveMenuItem.Click
@@ -156,10 +162,7 @@ Public Class Items
             MsgBox(" برجاء ادخال أسم الصنف")
             Exit Sub
         End If
-        'If TextBox3.Text = "" Then
-        '    MsgBox(" برجاء ادخال الأسم الثانى للصنف")
-        '    Exit Sub
-        'End If
+       
         If ComboBox1.Text = "" Then
             MsgBox(" برجاء ادخال نوع الصنف")
             Exit Sub
@@ -184,50 +187,9 @@ Public Class Items
         '    MsgBox(" برجاء ادخال السعر صحيح")
         '    Exit Sub
         'End If
-        'If Val(TextBox4.Text) <= 0 Then
-        '    MsgBox(" برجاء ادخال السعر ")
-        '    Exit Sub
-        'End If
-
+       
         REM ===== save 
-        InsertAlltransaction()
 
-        doc_log(TextBox1.Text, SaveMenuItem.Text, "Save Item", "")
-        'If SaveMenuItem.Text = "حفظ" Then
-
-        '    arg = "INSERT INTO items(code, name, aname, UOM, Type1, family, cost, ReOrder, wght, SerialTrack, Active, Remarks, user_id, trx_date)"
-        '    arg = arg & "VALUES ('" & UCase(TextBox1.Text) & "','" & TextBox2.Text & "','" & TextBox3.Text & "','" & ComboBox5.Text & "','" & ComboBox1.Text & "','" & ComboBox2.Text & "','" & Val(TextBox4.Text) & "','" & Val(TextBox6.Text) & "','" & Val(TextBox7.Text) & "'  ,'" & Val(ComboBox3.SelectedIndex) & "','" & checked & "','" & TextBox5.Text & "','" & user_id & "', getdate())"
-        '    If conn.State = ConnectionState.Closed Then conn.Open()
-        '    Dim cmd1 As New System.Data.SqlClient.SqlCommand(arg, conn)
-        '    cmd1.ExecuteNonQuery()
-
-
-        'Else
-
-        '    arg = "UPDATE items SET   UOM = '" & ComboBox5.Text & "', Type1 ='" & ComboBox1.Text & "', family ='" & ComboBox2.Text & "', cost ='" & Val(TextBox4.Text) & "', ReOrder ='" & Val(TextBox6.Text) & "', wght ='" & Val(TextBox7.Text) & "', SerialTrack ='" & Val(ComboBox3.SelectedIndex) & "', Active ='" & checked & "', Remarks ='" & TextBox5.Text & "', user_id ='" & user_id & "', trx_date = getdate() WHERE (code = '" & TextBox1.Text & "')"
-        '    If conn.State = ConnectionState.Closed Then conn.Open()
-        '    Dim cmd1 As New System.Data.SqlClient.SqlCommand(arg, conn)
-        '    cmd1.ExecuteNonQuery()
-        'End If
-        'REM ===== save UOM
-        'If DG1.Rows.Count <> 0 Then
-        '    arg = "DELETE FROM items_uom WHERE (item = '" & TextBox1.Text & "')"
-        '    If conn.State = ConnectionState.Closed Then conn.Open()
-        '    Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
-        '    cmd2.ExecuteNonQuery()
-        '    For i As Integer = 0 To DG1.Rows.Count - 1
-        '        arg = " INSERT INTO items_uom (item, UOM, factor) VALUES('" & TextBox1.Text & "','" & DG1.Rows(i).Cells("UOM").Value.ToString & "' , '" & DG1.Rows(i).Cells("factor").Value.ToString & "' )"
-        '        If conn.State = ConnectionState.Closed Then conn.Open()
-        '        Dim cmd3 As New System.Data.SqlClient.SqlCommand(arg, conn)
-        '        cmd3.ExecuteNonQuery()
-
-        '    Next
-        'End If
-        MsgBox("تم الحفظ")
-        NewMenuItem_Click(sender, e)
-    End Sub
-
-    Private Sub InsertAlltransaction()
         REM === to Commit transaction
         Dim command As SqlCommand = conn.CreateCommand()
         Dim transaction As SqlTransaction
@@ -285,8 +247,8 @@ Public Class Items
             End Try
         End Try
 
+        NewMenuItem_Click(sender, e)
     End Sub
-
     Private Sub ComboBox4_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBox4.SelectedIndexChanged
         If ComboBox4.Text = "" Then Exit Sub
         TextBox8.Focus()
@@ -334,7 +296,7 @@ Public Class Items
         REM ========== Check Dublicat
         For Each row As DataGridViewRow In DG1.Rows
 
-            If row.Cells.Item("UOM").Value = ComboBox4.Text And row.Cells.Item("factor").Value = TextBox8.Text Then
+            If row.Cells.Item("UOM").Value = ComboBox4.Text Then
                 MsgBox("تم ادخال هذة الوحده من قبل ") : Exit Sub
             End If
         Next
@@ -360,8 +322,8 @@ Public Class Items
         If reader1.HasRows = True Then
             MsgBox("لا يمكن حذف هذا الصنف") : Exit Sub
         End If
-
-        REM ================= Delete Before Save serial History == Details
+        reader1.Close()
+        REM ================= Delete items_uom
         arg = "DELETE  FROM items_uom WHERE item = '" & TextBox1.Text & "' and UOM = '" & DG1.CurrentRow.Cells("UOM").Value & "'"
         If conn.State = ConnectionState.Closed Then conn.Open()
         Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
@@ -369,6 +331,15 @@ Public Class Items
 
 
 
+
         loaddata()
+    End Sub
+
+    Private Sub TextBox8_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBox8.TextChanged
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBox1.TextChanged
+
     End Sub
 End Class

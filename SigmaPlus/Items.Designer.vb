@@ -57,20 +57,20 @@ Partial Class Items
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.DG1 = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.DeleteItemMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.DeleteItemMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         CType(Me.DG1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -100,8 +100,8 @@ Partial Class Items
         'DeleteMenuItem
         '
         Me.DeleteMenuItem.Name = "DeleteMenuItem"
-        Me.DeleteMenuItem.Size = New System.Drawing.Size(55, 23)
-        Me.DeleteMenuItem.Text = "حذف"
+        Me.DeleteMenuItem.Size = New System.Drawing.Size(49, 23)
+        Me.DeleteMenuItem.Text = "إلغاء"
         '
         'ToolsMenuItem
         '
@@ -425,6 +425,19 @@ Partial Class Items
         Me.DG1.Size = New System.Drawing.Size(472, 247)
         Me.DG1.TabIndex = 2
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteItemMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(157, 52)
+        '
+        'DeleteItemMenuItem
+        '
+        Me.DeleteItemMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.DeleteItemMenuItem.Name = "DeleteItemMenuItem"
+        Me.DeleteItemMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.DeleteItemMenuItem.Text = "إلغاء الوحده "
+        '
         'TabPage3
         '
         Me.TabPage3.Location = New System.Drawing.Point(4, 28)
@@ -468,19 +481,6 @@ Partial Class Items
         Me.TextBox1.Size = New System.Drawing.Size(351, 27)
         Me.TextBox1.TabIndex = 0
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteItemMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(165, 30)
-        '
-        'DeleteItemMenuItem
-        '
-        Me.DeleteItemMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.DeleteItemMenuItem.Name = "DeleteItemMenuItem"
-        Me.DeleteItemMenuItem.Size = New System.Drawing.Size(164, 26)
-        Me.DeleteItemMenuItem.Text = "حذف  الوحده "
-        '
         'Items
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 19.0!)
@@ -507,9 +507,9 @@ Partial Class Items
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         CType(Me.DG1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -5,10 +5,14 @@ Public Class Inventory_form
     Dim factor, items As String
 
     Private Sub NewMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles NewMenuItem.Click
-        TextBox1.Text = next_serial("Serial", "Serial_Details", Label6.Text, Label5.Text)
+        TextBox1.Text = next_serial("Serial", "Invo", Label6.Text, Label5.Text)
         TextBox2.Text = ""
         TextBox3.Text = ""
         TextBox4.Text = ""
+        TextBox5.Text = ""
+        TextBox6.Text = ""
+        TextBox7.Text = ""
+        TextBox8.Text = ""
         DG1.DataSource = Nothing
 
         REM==================================== Change Control
@@ -45,16 +49,13 @@ Public Class Inventory_form
         Dim Track As Int16
         REM ===== Retrive Date 
         If code <> "" Then
-            arg = "SELECT code, name, aname, UOM, Type1, family, cost, ReOrder, wght, SerialTrack, Active, Remarks FROM items WHERE (code = '" & code & "')"
+            arg = "SELECT name,SerialTrack, Active, Remarks FROM items WHERE (code = '" & code & "')"
             Dim cmd2 As SqlCommand = New SqlCommand(arg, conn)
             Dim reader1 As SqlDataReader = cmd2.ExecuteReader()
             If reader1.HasRows = True Then
                 reader1.Read()
                 TextBox3.Text = reader1("name").ToString
                 Track = Val(reader1("SerialTrack").ToString)
-                'ComboBox1.Items.Clear()
-                'ComboBox1.Items.Add("")
-                'ComboBox1.Items.Add(reader1("UOM").ToString)
             End If
             reader1.Close()
         End If
@@ -103,7 +104,7 @@ Public Class Inventory_form
         Inventory_Details.ShowDialog()
         GroupBox1.Enabled = False
         GroupBox2.Enabled = True
-        GroupBox3.Enabled = True
+        GroupBox3.Enabled = False
         'TextBox2.Enabled = False
     End Sub
 
@@ -128,7 +129,7 @@ Public Class Inventory_form
     End Sub
 
     Public Sub loaddata()       
-        arg = "SELECT dbo.Move.Item AS Itemno, dbo.items.name AS ItemName, dbo.Move.UOM, dbo.Move.Qty, dbo.Move.NetQty, dbo.Move.RowID FROM            dbo.Move INNER JOIN dbo.items ON dbo.Move.Item = dbo.items.code  GROUP BY dbo.Move.Item, dbo.Move.UOM, dbo.Move.Qty, dbo.Move.NetQty, dbo.Move.RowID, dbo.Move.Serial, dbo.items.name, dbo.Move.WhNo, dbo.Move.Indi HAVING       (dbo.Move.Serial = '" & TextBox1.Text & "') AND (dbo.Move.Indi = '" & Label6.Text & "') AND (dbo.Move.WhNo = '" & Label5.Text & "')"
+        arg = "SELECT dbo.Move.Item AS Itemno, dbo.items.name AS ItemName, dbo.Move.UOM, SUM(dbo.Move.Qty) AS Qty, SUM(dbo.Move.NetQty) AS NetQty FROM  dbo.Move INNER JOIN dbo.items ON dbo.Move.Item = dbo.items.code GROUP BY dbo.Move.Item, dbo.Move.UOM, dbo.Move.Serial, dbo.items.name, dbo.Move.WhNo, dbo.Move.Indi HAVING       (dbo.Move.Serial = '" & TextBox1.Text & "') AND (dbo.Move.Indi = '" & Label6.Text & "') AND (dbo.Move.WhNo = '" & Label5.Text & "') ORDER BY Itemno"
         fill_datagrid(DG1, arg)
         DG1.Columns(0).HeaderText = "كود الصنف"
         DG1.Columns(1).HeaderText = "اسم الصنف"
@@ -140,7 +141,7 @@ Public Class Inventory_form
         DG1.Columns(3).Width = 100
 
         DG1.Columns(4).Visible = False
-        DG1.Columns(5).Visible = False
+        'DG1.Columns(5).Visible = False
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged_1(sender As System.Object, e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -159,32 +160,29 @@ Public Class Inventory_form
 
     Private Sub TextBox5_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles TextBox5.KeyDown
         If e.KeyCode <> Keys.Enter Then Exit Sub
-        REM ================= validat
+        REM ================================================= validat
         If items = "" Then
-            MsgBox("برجاء إدخل الصنف ")
-            Exit Sub
+            MsgBox("برجاء إدخل الصنف ") : Exit Sub
         End If
         If ComboBox1.Text = "" Then
-            MsgBox("برجاء اختيار الوحده")
-            Exit Sub
+            MsgBox("برجاء اختيار الوحده") : Exit Sub
         End If
         If TextBox5.Text = "" Then
-            MsgBox("برجاء ادخال الكميه")
-            Exit Sub
+            MsgBox("برجاء ادخال الكميه") : Exit Sub
         End If
         If Val(TextBox5.Text) < 1 Then
-            MsgBox("برجاء ادخال الكميه")
-            Exit Sub
+            MsgBox("برجاء ادخال الكميه") : Exit Sub
         End If
-        'REM ========== Check Dublicat
+        'REM =============================================== Check Dublicat
         For Each row As DataGridViewRow In DG1.Rows
             If row.Cells.Item("UOM").Value = ComboBox1.Text And row.Cells.Item("Itemno").Value = Label9.Text Then
-
                 MsgBox("تم ادخال هذة الوحده من قبل ") : Exit Sub
             End If
         Next
+
         REM ================= save Commit
         InsertAlltransaction()
+
 
         'arg = "INSERT INTO Serial_Details(Indi, Serial, WhNo, ItemNo, UOM, Qty, NetUOMQty, NetQty, user_id, trx_date)"
         'arg = arg & " VALUES('" & Label6.Text & "','" & TextBox1.Text & "' ,'" & Label5.Text & "' ,'" & items & "' ,'" & ComboBox1.Text & "', '" & Val(TextBox5.Text) & "','" & factor & "','" & Val(TextBox5.Text * factor) & "' , '" & user_id & "', getdate())"
@@ -209,8 +207,8 @@ Public Class Inventory_form
         Label10.Text = ""
         Label9.Text = ""
         ComboBox1.Text = ""
-        ComboBox1.Visible = False
-        TextBox5.Visible = False
+        ComboBox1.Enabled = False
+        TextBox5.Enabled = False
         TextBox2.Focus()
     End Sub
 
@@ -256,7 +254,7 @@ Public Class Inventory_form
     End Sub
 
     Private Sub DeleteItemMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DeleteItemMenuItem.Click
-        Dim J = MsgBox(" هل تريد حذف صنف " & DG1.CurrentRow.Cells("Itemno").Value & " ", vbYesNo)
+        Dim J = MsgBox(" هل تريد الغاء صنف " & DG1.CurrentRow.Cells("Itemno").Value & " ", vbYesNo)
         If J <> 6 Then Exit Sub
         REM ================= Delete Before Save serial History == Details
         arg = "DELETE FROM Serial_Details WHERE Indi = '" & Label6.Text & "' and Serial = '" & TextBox1.Text & "' and WhNo ='" & Label5.Text & "' and ItemNo ='" & DG1.CurrentRow.Cells("Itemno").Value & "' and UOM ='" & DG1.CurrentRow.Cells("UOM").Value & "'"
@@ -268,9 +266,10 @@ Public Class Inventory_form
         If conn.State = ConnectionState.Closed Then conn.Open()
         Dim cmd5 As New System.Data.SqlClient.SqlCommand(arg, conn)
         cmd5.ExecuteNonQuery()
-        If DG1.RowCount = 0 Then
+
+        If DG1.Rows.Count = 1 Then
             REM ------------------- Save Header
-            arg = " DELETE FROM Invo WHERE (Indi = '" & Label6.Text & "') AND (Serial = '" & TextBox1.Text & "') AND (WhNo = '" & Label5.Text & "')) "
+            arg = " DELETE FROM Invo WHERE (Indi = '" & Label6.Text & "') AND (Serial = '" & TextBox1.Text & "') AND (WhNo = '" & Label5.Text & "') "
             If conn.State = ConnectionState.Closed Then conn.Open()
             Dim cmd3 As New System.Data.SqlClient.SqlCommand(arg, conn)
             cmd3.ExecuteNonQuery()
@@ -287,6 +286,20 @@ Public Class Inventory_form
     End Sub
 
     Private Sub InsertAlltransaction()
+        REM ========check serial
+        If DG1.Rows.Count = 0 Then
+            Dim newserial As String = next_serial("Serial", "Invo", Label6.Text, Label5.Text)
+            If TextBox1.Text <> newserial Then
+                TextBox1.Text = newserial
+                MsgBox(" تم الحفظ برقم مسلسل  " & TextBox1.Text)
+            End If
+        End If
+        Dim NetUOMQty As Integer
+        If Label6.Text = "RCV" Then
+            NetUOMQty = Val(TextBox5.Text) * 1
+        ElseIf Label6.Text = "Issue" Then
+            NetUOMQty = Val(TextBox5.Text) * -1
+        End If
         REM === to Commit transaction
         Dim command As SqlCommand = conn.CreateCommand()
         Dim transaction As SqlTransaction
@@ -296,16 +309,24 @@ Public Class Inventory_form
         command.Transaction = transaction
 
         Try
+            REM ------------------- Save Header
+            arg = " if not exists (SELECT Indi, Serial, WhNo FROM Invo WHERE (Indi = '" & Label6.Text & "') AND (Serial = '" & TextBox1.Text & "') AND (WhNo = '" & Label5.Text & "')) "
+            arg = arg & " BEGIN "
+            arg = arg & " INSERT INTO Invo (Indi, Serial, WhNo, Date1, Remarks,posted, user_id, trx_date, CCTYPE, CCCODE, CCREF)"
+            arg = arg & " VALUES ('" & Label6.Text & "','" & TextBox1.Text & "','" & Label5.Text & "','" & DateTimePicker1.Value.ToString("yyyy/MM/dd") & "','" & TextBox4.Text & "', '0' ,'" & user_id & "', getdate(),'" & TextBox8.Text & "','" & TextBox7.Text & "','" & TextBox6.Text & "')"
+            arg = arg & " END"
+            command.CommandText = arg
+            command.ExecuteNonQuery()
 
             REM ------------------- Save Details
-            arg = "INSERT INTO Serial_Details(Indi, Serial, WhNo, ItemNo, UOM, Qty, NetUOMQty, NetQty, user_id, trx_date)"
-            arg = arg & " VALUES('" & Label6.Text & "','" & TextBox1.Text & "' ,'" & Label5.Text & "' ,'" & items & "' ,'" & ComboBox1.Text & "', '" & Val(TextBox5.Text) & "','" & factor & "','" & Val(TextBox5.Text * factor) & "' , '" & user_id & "', getdate())"
-            command.CommandText = arg
+            Dim arg2 As String = "INSERT INTO Serial_Details(Indi, Serial, WhNo, ItemNo, UOM, Qty, NetUOMQty, NetQty,Posted, user_id, trx_date)"
+            arg2 = arg2 & " VALUES('" & Label6.Text & "','" & TextBox1.Text & "' ,'" & Label5.Text & "' ,'" & items & "' ,'" & ComboBox1.Text & "', '" & Val(TextBox5.Text) & "','" & NetUOMQty & "','" & Val(TextBox5.Text * factor) & "' ,'0', '" & user_id & "', getdate())"
+            command.CommandText = arg2
             command.ExecuteNonQuery()
 
             REM ================= save Move
             Dim arg1 As String = "INSERT INTO Move(Indi, Serial, WhNo, Item, UOM, Qty, NetUOMQty, NetQty, user_id, trx_date,Date1)"
-            arg1 = arg1 & " VALUES('" & Label6.Text & "','" & TextBox1.Text & "' ,'" & Label5.Text & "' ,'" & items & "' ,'" & ComboBox1.Text & "', '" & Val(TextBox5.Text) & "','" & factor & "','" & Val(TextBox5.Text * factor) & "' , '" & user_id & "', getdate(),'" & DateTimePicker1.Value.ToString("yyyy/MM/dd") & "')"
+            arg1 = arg1 & " VALUES('" & Label6.Text & "','" & TextBox1.Text & "' ,'" & Label5.Text & "' ,'" & items & "' ,'" & ComboBox1.Text & "', '" & Val(TextBox5.Text) & "','" & NetUOMQty & "','" & Val(TextBox5.Text * factor) & "' , '" & user_id & "', getdate(),'" & DateTimePicker1.Value.ToString("yyyy/MM/dd") & "')"
             command.CommandText = arg1
             command.ExecuteNonQuery()
 
@@ -331,6 +352,22 @@ Public Class Inventory_form
     End Sub
 
     Private Sub TextBox5_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBox5.TextChanged
+
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBox3.TextChanged
+
+    End Sub
+
+    Private Sub PostMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PostMenuItem.Click
+
+    End Sub
+
+    Private Sub SaveMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SaveMenuItem.Click
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBox1.TextChanged
 
     End Sub
 End Class

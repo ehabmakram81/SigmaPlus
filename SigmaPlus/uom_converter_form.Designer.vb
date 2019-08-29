@@ -51,6 +51,7 @@ Partial Class uom_converter_form
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(503, 28)
         Me.TextBox2.TabIndex = 1
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label1
         '
@@ -130,9 +131,9 @@ Partial Class uom_converter_form
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(147, 249)
+        Me.Button1.Location = New System.Drawing.Point(147, 238)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(299, 27)
+        Me.Button1.Size = New System.Drawing.Size(299, 38)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "حفظ"
         Me.Button1.UseVisualStyleBackColor = True

@@ -20,7 +20,7 @@
 
     Private Sub dg1_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles dg1.KeyPress
         If e.KeyChar <> Microsoft.VisualBasic.ChrW(Keys.Return) Then Exit Sub
-        If dg1.RowCount - 1 = dg1.CurrentRow.Index Then Exit Sub
+        'If dg1.RowCount - 1 = dg1.CurrentRow.Index Then Exit Sub
         If dg1.CurrentRow.Index = 0 Then Exit Sub
 
         REM ----------------------------------------------------------------------------
@@ -32,7 +32,7 @@
     End Sub
 
     Private Sub dg1_CellDoubleClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dg1.CellDoubleClick
-        If dg1.RowCount - 1 = dg1.CurrentRow.Index Then Exit Sub
+        If dg1.RowCount - 1 > dg1.CurrentRow.Index Then Exit Sub
         If e.RowIndex < 0 Then Exit Sub
         ' If dg1.CurrentRow.Index = 0 Then Exit Sub
         REM ----------------------------------------------------------------------------
@@ -40,5 +40,9 @@
         acc_master = dg1.Item(0, i).Value
         acc_name = dg1.Item(1, i).Value
         Close()
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBox2.TextChanged
+
     End Sub
 End Class

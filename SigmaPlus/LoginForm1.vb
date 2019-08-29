@@ -32,7 +32,7 @@ Public Class LoginForm1
         REM ---------------- update company Name & users data
         user_id = UsernameTextBox.Text
         Main.ToolStripStatusLabel1.Text = user_id
-        Main.ToolStripStatusLabel2.Text = "Sigma Industries"
+        Main.ToolStripStatusLabel2.Text = find_setting("CompanyName")
         Main.ToolStripStatusLabel3.Text = "Version : " & Application.ProductVersion
         REM ---------------- log the entry 
         Me.Hide()
@@ -45,7 +45,7 @@ Public Class LoginForm1
     
     Private Sub LoginForm1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call center(Me)
-        conn = New SqlConnection("server = GEORGE-ERYAN\SQL2012 ;database = SIGMADB;Integrated Security=SSPI;")
+        'conn = New SqlConnection("server = GEORGE-ERYAN\SQL2012 ;database = SIGMADB;Integrated Security=SSPI;")
         conn = New SqlConnection("server = DESKTOP-P14JTDU\GEORGE_SQL2012 ;database = SIGMADB;Integrated Security=SSPI;")
         conn = New SqlConnection("Data Source=.;Initial Catalog=SigmaDB;Integrated Security=True")
         conn.Open()

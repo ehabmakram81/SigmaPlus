@@ -1,6 +1,6 @@
 ﻿
 Public Class Main
-   
+
 
 
 
@@ -90,7 +90,7 @@ Public Class Main
 
     Private Sub Main_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
-        
+
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem2.Click
@@ -123,5 +123,13 @@ Public Class Main
     Private Sub OptionsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles OptionsToolStripMenuItem.Click
         more_info.ShowDialog()
 
+    End Sub
+
+    Private Sub UOMConverterToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles UOMConverterToolStripMenuItem.Click
+        Call select_one("Select store", "select code  as name from stores")
+        If state = "cancel" Then Exit Sub
+        whno = select_one_form.ComboBox1.Text
+
+        uom_converter_form.ShowDialog()
     End Sub
 End Class

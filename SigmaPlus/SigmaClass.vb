@@ -81,6 +81,7 @@ Public Module SigmaClass
         Dim cmd2 As New System.Data.SqlClient.SqlCommand(arg, conn)
         cmd2.ExecuteNonQuery()
     End Sub
+
     REM -------------------------------------------------------------
     Public Sub short_ha(acc_mas, acc_nam, file1)
         Static arg
